@@ -11,15 +11,15 @@ learning_rate = 0.01
 epochs = 10000
 
 # Hidden Layer
-with tf.variable_scope('hidden_layer'):
-    h_w = tf.Variable(tf.truncated_normal([2, 2]), name='Weights')
-    h_b = tf.Variable(tf.truncated_normal([4, 2]))
+with tf.variable_scope('hidden'):
+    h_w = tf.Variable(tf.truncated_normal([2, 2]), name='weights')
+    h_b = tf.Variable(tf.truncated_normal([4, 2]), name='biases')
     h = tf.nn.relu(tf.matmul(X, h_w) + h_b)
 
 # Output Layer
 with tf.variable_scope('output'):
-    o_w = tf.Variable(tf.truncated_normal([2, 1]))
-    o_b = tf.Variable(tf.truncated_normal([4, 1]))
+    o_w = tf.Variable(tf.truncated_normal([2, 1]), name='weights')
+    o_b = tf.Variable(tf.truncated_normal([4, 1]), name='biases')
     Y_estimation = tf.nn.sigmoid(tf.matmul(h, o_w) + o_b)
 
 # Loss function
